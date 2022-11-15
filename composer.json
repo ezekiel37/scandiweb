@@ -1,0 +1,17 @@
+{
+    "name": "ezekiel.godwin/restapi",
+    "description": "scandiweb api",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/App"
+        }
+    },
+
+    "authors": [
+        {
+            "name": "ezekiel37",
+            "email": "ezekielojo37@gmail.com"
+        }
+    ],
+    "require": {}
+}
