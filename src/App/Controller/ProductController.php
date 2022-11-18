@@ -115,9 +115,9 @@ class ProductController
 
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
-                $d = file_get_contents('php://input'); 
+               
               
-                print_r($d);
+                print_r($data);
                 
                 $conn = $database->getConnection();
 
