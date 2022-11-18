@@ -11,82 +11,63 @@ class ProductController
 {
     public function processRequest(string $method, $database, ?string $id): void
     {
-       
-
-       
-        if ($id == null ) {
-
-         
-
+        if ($id == null) {
             $this->processCollectionRequest($method, $database);
-          
-        } 
-        else if($id == "delete"){
+        } elseif ($id == "delete") {
             $this->processDeleteRequest($database);
-        }
-        else if($id == "check"){
-         
-             $this->processResourceRequest($method, $database, $id);
-        }
-        else {
+        } elseif ($id == "check") {
+            $this->processResourceRequest($method, $database, $id);
+        } else {
             http_response_code(404);
             echo "404 not found";
         }
     }
 
-    private function processDeleteRequest($database){
-
+    private function processDeleteRequest($database)
+    {
         $conn = $database->getConnection();
         echo "getting deleted...";
-       
+
 
         $data = (array) json_decode(file_get_contents("php://input"), true);
         $deleted = $data["products"];
 
-        
-        $sql = "DELETE FROM products WHERE id IN (".implode(",", $deleted ) . ")";
+
+        $sql = "DELETE FROM products WHERE id IN (".implode(",", $deleted) . ")";
         $stmt = $conn->prepare($sql);
 
-       
+
 
         $stmt->execute();
 
         echo $stmt->rowCount();
-        
     }
-    
+
     private function processResourceRequest(string $method, $database, string $id): void
     {
-    $conn = $database->getConnection();
-    $data = (array) json_decode(file_get_contents("php://input"), true);
+        $conn = $database->getConnection();
+        $data = (array) json_decode(file_get_contents("php://input"), true);
 
-    $sku = $data["sku"];
+        $sku = $data["sku"];
 
-    if (!$sku) {
-        http_response_code(404);
-        echo json_encode(["message" => "Product not found"]);
-    }
+        if (!$sku) {
+            http_response_code(404);
+            echo json_encode(["message" => "Product not found"]);
+        }
 
 
-    $sql = "SELECT *
+        $sql = "SELECT *
                 FROM products
                 WHERE sku = :sku";
 
-    $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql);
 
-    $stmt->bindValue(":sku", $sku, PDO::PARAM_INT);
+        $stmt->bindValue(":sku", $sku, PDO::PARAM_INT);
 
-    $stmt->execute();
+        $stmt->execute();
 
-    echo $stmt->rowCount();
-
-  
-   
-  
-}
-         
-        
-    
+        echo $stmt->rowCount();
+    }
 
     private function processCollectionRequest(string $method, $database): void
     {
@@ -104,23 +85,20 @@ class ProductController
                     $data[] = $row;
                 }
 
-
                 echo json_encode($data);
 
                 break;
 
             case "POST":
-             
-               $data = (array) json_decode(file_get_contents("php://input"), true);
 
-               
-              
-              
+                $data = (array) json_decode(file_get_contents("php://input"), true);
+
                 $conn = $database->getConnection();
+
                 $selectedType = $data["select"];
 
                 echo "selectedType: " . $selectedType;
-                
+
                 $productSelect = [
                 'Book'=> $book = new Book(),
                 'Dvd'=> $dvd = new Dvd(),

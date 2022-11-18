@@ -7,14 +7,7 @@ use PDOException;
 
 class Database
 {
-    public function __construct(
-        // private string $host,
-        // private string $name,
-        // private string $user,
-        // private string $password
-    ) {
-    }
-
+   
     public function getConnection(): PDO
     {
         try {
@@ -25,9 +18,7 @@ class Database
                 PDO::ATTR_STRINGIFY_FETCHES => false
             ]);
         } catch (PDOException $e) {
-           die($e->getMessage());
+            die($e->getMessage());
         }
-
     }
 }
-

@@ -31,31 +31,8 @@ if ($parts[1] != "products") {
 
 $id = $parts[2] ?? null;
 
-// $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = "eu-cdbr-west-03.cleardb.net";
-$cleardb_username = "b9786c552a00d9";
-$cleardb_password = "c675098c";
-// $cleardb_db = substr($cleardb_url["path"],1);
-$cleardb_db = "heroku_d2fd36cf9777c31";
-
-
-$database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$database = new Database();
 
 $controller = new ProductController();
 
-
-$check =  $controller->processRequest($_SERVER["REQUEST_METHOD"],  $database, $id);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$check =  $controller->processRequest($_SERVER["REQUEST_METHOD"], $database, $id);
