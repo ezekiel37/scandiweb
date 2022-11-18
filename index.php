@@ -44,7 +44,13 @@ $database = new Database($cleardb_server, $cleardb_username, $cleardb_password, 
 
 $controller = new ProductController();
 
-$controller->processRequest($_SERVER["REQUEST_METHOD"],  $database, $id);
+var_dump($controller);
+
+$check =  $controller->processRequest($_SERVER["REQUEST_METHOD"],  $database, $id);
+
+echo "this is check"; 
+
+var_dump($check);
 
 
 
