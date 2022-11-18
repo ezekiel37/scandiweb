@@ -39,6 +39,9 @@ $cleardb_db = substr($cleardb_url["path"],1);
 // $cleardb_db = "heroku_d2fd36cf9777c31";
 
 
+echo $cleardb_server;
+echo $cleardb_username;
+echo $cleardb_password;
 
 // $database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
 $database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
