@@ -23,7 +23,7 @@ $parts = explode("/", $_SERVER["REQUEST_URI"]);
 
 
 var_dump($parts);
-if ($parts[2] != "products") {
+if ($parts[1] != "products") {
     echo "not found 404 error";
     http_response_code(404);
     exit;
@@ -31,7 +31,15 @@ if ($parts[2] != "products") {
 
 $id = $parts[3] ?? null;
 
-$database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"],1);
+
+
+// $database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
+$database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 $controller = new ProductController();
 
