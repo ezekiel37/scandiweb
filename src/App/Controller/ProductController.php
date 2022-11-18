@@ -113,9 +113,10 @@ class ProductController
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
                 
-                var_dump($data);
-
                 $conn = $database->getConnection();
+
+                var_dump($conn);
+                
                 $selectedType = $data["select"];
 
                 echo "selectedType: " . $selectedType;

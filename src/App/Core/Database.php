@@ -23,5 +23,9 @@ class Database
             PDO::ATTR_EMULATE_PREPARES => false,
             PDO::ATTR_STRINGIFY_FETCHES => false
         ]);
+
+        echo $this->host;
+        echo $this->password;
+       
     }
 }
