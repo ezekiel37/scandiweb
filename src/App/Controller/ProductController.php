@@ -24,9 +24,12 @@ class ProductController
         else if($id == "delete"){
             $this->processDeleteRequest($database);
         }
-        else {
-          
+        else if($id == "check"){
+          echo "we are here";
              $this->processResourceRequest($method, $database, $id);
+        }
+        else {
+            echo "404 not found";
         }
     }
 
@@ -43,17 +46,12 @@ class ProductController
         $sql = "DELETE FROM products WHERE id IN (".implode(",", $deleted ) . ")";
         $stmt = $conn->prepare($sql);
 
-        // $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+       
 
         $stmt->execute();
 
         echo $stmt->rowCount();
-        // $rows = $this->gateway->delete($id);
-
-        // echo json_encode([
-        //     "message" => "Product $id deleted",
-        //     "rows" => $rows
-        // ]);
+        
     }
     
     private function processResourceRequest(string $method, $database, string $id): void
@@ -111,19 +109,13 @@ class ProductController
                 break;
 
             case "POST":
-                echo "inside POST request";
-
-                $data = (array) json_decode(file_get_contents("php://input"), true);
+             
+               $data = (array) json_decode(file_get_contents("php://input"), true);
 
                
               
               
                 $conn = $database->getConnection();
-
-                // print_r($_POST[]);
-
-               
-
                 $selectedType = $data["select"];
 
                 echo "selectedType: " . $selectedType;

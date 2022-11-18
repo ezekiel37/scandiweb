@@ -29,7 +29,7 @@ if ($parts[1] != "products") {
     exit;
 }
 
-$id = $parts[3] ?? null;
+$id = $parts[2] ?? null;
 
 // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $cleardb_server = "eu-cdbr-west-03.cleardb.net";
@@ -39,9 +39,6 @@ $cleardb_password = "c675098c";
 $cleardb_db = "heroku_d2fd36cf9777c31";
 
 
-// echo $cleardb_db;
-
-// $database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
 $database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 $controller = new ProductController();
@@ -49,9 +46,6 @@ $controller = new ProductController();
 
 $check =  $controller->processRequest($_SERVER["REQUEST_METHOD"],  $database, $id);
 
-// echo "this is check"; 
-
-// var_dump($check);
 
 
 
