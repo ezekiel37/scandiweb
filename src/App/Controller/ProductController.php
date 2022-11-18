@@ -114,12 +114,14 @@ class ProductController
                 echo "inside POST request";
 
                 $data = (array) json_decode(file_get_contents("php://input"), true);
-                
-              
 
+                $d = file_get_contents('php://input'); 
+              
+                print_r($d);
+                
                 $conn = $database->getConnection();
 
-                var_dump($_POST);
+                print_r($_POST[]);
 
                 var_dump($database);
 
