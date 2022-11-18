@@ -11,6 +11,10 @@ class ProductController
 {
     public function processRequest(string $method, $database, ?string $id): void
     {
+        echo "got here";
+        echo "this is";
+        echo $method;
+
        
         if ($id == null ) {
            
