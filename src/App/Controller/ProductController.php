@@ -25,10 +25,11 @@ class ProductController
             $this->processDeleteRequest($database);
         }
         else if($id == "check"){
-          echo "we are here";
+         
              $this->processResourceRequest($method, $database, $id);
         }
         else {
+            http_response_code(404);
             echo "404 not found";
         }
     }
