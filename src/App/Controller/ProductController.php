@@ -122,9 +122,9 @@ class ProductController
 
                 // print_r($_POST[]);
 
-                var_dump($database);
+               
 
-                $selectedType = $_POST["select"];
+                $selectedType = $data["select"];
 
                 echo "selectedType: " . $selectedType;
                 
