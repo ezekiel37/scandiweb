@@ -121,7 +121,7 @@ class ProductController
                 
                 $conn = $database->getConnection();
 
-                print_r($_POST[]);
+                // print_r($_POST[]);
 
                 var_dump($database);
 
