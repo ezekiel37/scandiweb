@@ -16,7 +16,7 @@ class ProductController
        
         if ($id == null ) {
 
-           echo "we are here"; 
+         
 
             $this->processCollectionRequest($method, $database);
           
@@ -115,8 +115,10 @@ class ProductController
                 
                 $conn = $database->getConnection();
 
-                var_dump($conn);
-                
+                var_dump($data);
+
+                var_dump($database);
+
                 $selectedType = $data["select"];
 
                 echo "selectedType: " . $selectedType;
