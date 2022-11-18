@@ -21,6 +21,8 @@ header('Content-Type: application/json');
 
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
 
+
+var_dump($parts);
 if ($parts[2] != "products") {
     echo "not found 404 error";
     http_response_code(404);
