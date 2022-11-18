@@ -111,15 +111,19 @@ class ProductController
                 break;
 
             case "POST":
+                echo "inside POST request";
+
                 $data = (array) json_decode(file_get_contents("php://input"), true);
                 
+              
+
                 $conn = $database->getConnection();
 
-                var_dump($data);
+                var_dump($_POST);
 
                 var_dump($database);
 
-                $selectedType = $data["select"];
+                $selectedType = $_POST["select"];
 
                 echo "selectedType: " . $selectedType;
                 
