@@ -37,8 +37,7 @@ $cleardb_username = $cleardb_url["user"];
 $cleardb_password = $cleardb_url["pass"];
 $cleardb_db = substr($cleardb_url["path"],1);
 
-var_dump($cleardb_url);
-echo $cleardb_username;
+
 
 // $database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
 $database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);

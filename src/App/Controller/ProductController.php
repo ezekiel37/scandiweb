@@ -112,6 +112,8 @@ class ProductController
                
                 $conn = $database->getConnection();
                 $selectedType = $data["select"];
+
+                echo "selectedType: " . $selectedType;
                 
                 $productSelect = [
                 'Book'=> $book = new Book(),

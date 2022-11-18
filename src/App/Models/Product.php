@@ -14,6 +14,7 @@ abstract class Product
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;
+                echo "key".$this->{$key};
             }
         }
     }
