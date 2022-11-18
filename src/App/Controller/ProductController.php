@@ -11,18 +11,17 @@ class ProductController
 {
     public function processRequest(string $method, $database, ?string $id): void
     {
-        echo "got here";
-        echo "this is";
-        echo $method;
+       
 
        
         if ($id == null ) {
-           
+
+           echo "we are here"; 
+
             $this->processCollectionRequest($method, $database);
           
         } 
-        else 
-        if($id == "delete"){
+        else if($id == "delete"){
             $this->processDeleteRequest($database);
         }
         else {
@@ -113,7 +112,9 @@ class ProductController
 
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
-               
+                
+                var_dump($data);
+
                 $conn = $database->getConnection();
                 $selectedType = $data["select"];
 
