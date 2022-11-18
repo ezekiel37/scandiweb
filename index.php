@@ -32,16 +32,14 @@ if ($parts[1] != "products") {
 $id = $parts[3] ?? null;
 
 $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
+$cleardb_server = "eu-cdbr-west-03.cleardb.net";
+$cleardb_username = "b9786c552a00d9";
+$cleardb_password = "c675098c";
 $cleardb_db = substr($cleardb_url["path"],1);
 // $cleardb_db = "heroku_d2fd36cf9777c31";
 
 
-echo $cleardb_server;
-echo $cleardb_username;
-echo $cleardb_password;
+echo $cleardb_db;
 
 // $database = new Database("localhost", "scandiweb", "scandiweb", "scandiweb");
 $database = new Database($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
